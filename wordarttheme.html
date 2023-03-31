@@ -1,0 +1,490 @@
+<!-- 
+
+wordart theme
+
+keep in mind this is not a serious theme and is very simple/limited/not customizable 
+-->
+<!DOCTYPE html> 
+<html> 
+    <head>
+     <link rel="shortcut icon" href="{Favicon}" />
+     <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+        <title>{Title}</title>
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        {NewPostStyles}
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">    
+      {block:Options}
+        <meta name="color:text" content="#222" />
+        <meta name="color:links" content="{AccentColor}" />
+    {/block:Options}
+    
+    <style>
+/* Theme Options */
+        :root {
+            --spacing-sm: .6rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --text: {color:text};
+            --links: {color:links};
+        }
+        
+* {
+     box-sizing:border-box;
+}
+
+ body {
+     margin:0;
+     border:1px solid #ddd;
+     border-radius:.4rem;
+     background: white;
+     background-attachment:fixed;
+     font-family: 'Open Sans', sans-serif;     
+     word-wrap:break-word;
+     font-size: 20px;
+}
+ .flex {
+     display:flex;
+     flex-wrap:wrap;
+}
+ .centered {
+     align-items:center;
+     justify-content:center;
+}
+ .align-center {
+     align-items:center;
+}
+ blockquote {
+     border-left:2px solid var(--borders);
+     padding-left:var(--spacing-sm);
+     margin:0 0 0 var(--spacing-md);
+}
+ main {
+     width:100%;
+     margin:auto;
+     max-width:1230px;
+     justify-content:space-around;
+     align-items:flex-start;
+}
+ section {
+     width:calc(100% - 400px);
+}
+ .info, .tags, .reblog-content, .reblog-header, .original-post, .quote, .source {
+     padding: var(--spacing-md);
+}
+ .reblogs:not(:first-of-type) .reblog-header{
+     border-top:1px solid var(--borders);
+}
+ .reblog-header, .reblog-content {
+     padding-bottom:0;
+}
+ p:empty {
+     display:none;
+}
+ .tags {
+     width:100%;
+     padding-top:0;
+}
+ .info {
+     justify-content:space-between;
+}
+ .like-and-reblog {
+     width:50px;
+     align-items:center;
+     justify-content:space-between;
+}
+.like_button {
+    display:flex;
+    align-items:center;
+}
+ article h1 {
+     margin:0;
+}
+ article {
+    max-width:700px;
+    margin:var(--spacing-md);
+}
+ ol.notes li {
+     padding:10px;
+}
+ ol.notes img {
+     display:none;
+}
+ article img {
+     max-width:100%;
+     display:block;
+     margin: auto;
+}
+ a {
+     color:var(--links);
+}
+ aside {
+     max-width:400px;
+     height:100vh;
+     align-content:center;
+     position:sticky;
+     top:0;
+}
+ aside header {
+     width: 100%;
+}
+ .side-container, article {
+     border-radius:.2rem;
+     background:white;
+     color:var(--text);
+}
+
+.wordart {
+  font-weight: bold;
+  position:relative;
+}
+
+.wordart.rainbow {
+    font-size:1.6rem;
+}
+
+.wordart.rainbow .text {
+  background: red; 
+  position:relative;
+  z-index:1;
+  background: linear-gradient(to right, red, tomato, goldenrod, green, blue, purple); 
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rainbow:before {
+    z-index:0;
+    content:"{name}'s blog";
+    position:absolute;
+          color: #cdcdcd;
+          transform: rotateX(60deg) skew(40deg) translate(-20px, 10px) ;
+}
+
+.top path {
+  fill: transparent;
+}
+
+text {
+  fill: #24c0fd;
+    font-family: Impact, sans-serif;
+    font-size:8rem;
+    text-shadow: 0.13em -0.13em 0px #0000aa,
+    1px 1px #0000aa,
+      -1px 1px #0000aa,
+        1px -1px #0000aa,
+          -1px -1px #0000aa;
+    letter-spacing: -0.05em;
+}
+
+.top {
+    max-width:540px;
+    margin:10vh 0;
+}
+
+.top svg {
+    overflow:visible;
+}
+
+.inner-window {
+    padding:var(--spacing-md);
+}
+
+.links {
+    margin-top:var(--spacing-sm);
+}
+.links a, .info a:is(:not(.reblog_button)), .pagination a {
+    margin-right:.6ch;
+    font-size:1rem;
+    padding:calc(var(--spacing-sm) / 4) calc(var(--spacing-sm) / 2);
+    color:black;
+    border-radius: .2rem;
+    text-decoration:none;
+    border:1px solid #888;
+    background: linear-gradient(to bottom, #f6f6f6 0%, #ffffff 6%, #fffdfe 12%, #fbf9fa 18%, #f8f7f5 41%, #f7f3f0 47%, #f8f3ef 82%, #e7e0d8 94%, #dad3c9 100%);
+}
+
+.pagination {
+    margin:var(--spacing-lg) auto;
+    width:700px;
+}
+
+.links a:hover, .info a:is(:not(.reblog_button)):hover {
+     background: linear-gradient(to bottom, #eaf6fd 0%, #d9f0fc 42%, #bee6fd 47%, #bce5fc 58%, #a7d9f5 100%);
+}
+
+article h1 {
+    font-size:2.2rem;
+ font-family: Impact, sans-serif;
+  color: transparent;
+ background: linear-gradient(to left, #777, #fff, #777);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(1px 0 1px #000)  drop-shadow(0px 1px 1px #aaa)
+  drop-shadow(2px 1px 0px #000)  drop-shadow(1px 2px 0px #aaa)
+  drop-shadow(3px 2px 0px #000)  drop-shadow(2px 3px 0px #aaa)
+}
+
+article h2 {
+    font-size:1.8rem;
+  transform: rotate(-4deg) skewY(-4deg) translate(1rem, -1rem) ;
+   font-family: Impact, sans-serif;
+  color: transparent;
+  background: linear-gradient(#6900cc, #cb00cc);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.016em #d2a2fe;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(2px 2px #adadff)
+   
+}
+
+article:nth-of-type(even) h2 {
+       background: linear-gradient(to bottom, #fdea00 0%, #fdcf00 44%, #fc2700 100%);
+     font-weight:bold;
+     -webkit-background-clip: text;
+    background-clip: text;
+    filter: none;
+    -webkit-text-stroke: 0 transparent!important;
+}
+
+.caption a {
+    color:transparent;
+    background: linear-gradient(to bottom, var(--links) 30%, white, maroon);
+    background-clip:text;
+      -webkit-background-clip: text;
+
+    display:inline-block;
+    font-weight:bold;
+    border-bottom:1px solid var(--links);
+    filter: drop-shadow(1px 0 1px #000);
+    transform: perspective(2rem) rotateX(4deg) ;
+}
+
+.tags a{
+    font-family:'TImes New Roman';
+    color: #2F5485;
+    transform: perspective(0) rotateX(0);
+    background:transparent;
+    border-bottom:0;
+    filter: none;
+    text-shadow: 1px 1px 0px #aaa;
+}
+      {CustomCSS}
+    </style>    
+    </head>
+    <body class="{block:homepage}home{/block:homepage}{block:tagpage}tag{/block:tagpage}{block:searchpage}search{/block:searchpage}{block:submitpage}submit-{/block:submitpage}{block:AskPage}ask{/block:AskPage}-page">
+    
+<!-- main container -->    
+    <main class="flex">
+        <aside class="flex centered">
+            <div class="side-container">
+<!-- global theme options/blog info -->  
+<div class="inner-window">
+    <div class="wordart rainbow">
+        <span class="text">
+            {name}'s blog
+        </span>
+    </div>
+            {block:ShowDescription}
+            <div class="description">
+            
+                {Description}
+            </div>
+            {/block:ShowDescription}
+            <div class="links">
+                <a href="/">{lang:Home}</a>
+                {block:askenabled}
+                <a href="/ask">Ask</a>
+                {/block:askenabled}
+                {block:submissionsenabled}
+                <a href="/submit">Submit</a>
+                {/block:submissionsenabled}
+                <a href="/archive">Archive</a>
+                {block:HasPages}
+                    {block:Pages}
+                        <a href="{URL}">{Label}</a>
+                    {/block:Pages}
+                {/block:HasPages}
+                </div>
+            </div>
+            </div>
+        </aside>
+        
+<!-- posts -->        
+        <section>
+        <div class="top">
+<svg viewBox="0 0 1440 320" id="title-path">
+   <path id="curve" fill="#0099ff" fill-opacity="0.8" d="M0,160L60,133.3C120,107,240,53,360,74.7C480,96,600,192,720,192C840,192,960,96,1080,53.3C1200,11,1320,21,1380,26.7L1440,32L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" />
+  <text x="50%" y="40%" text-anchor="middle">
+    <textPath xlink:href="#curve">
+     {Title}
+    </textPath>
+  </text>
+</svg>
+     </div>
+        <div class="posts-container">
+        {block:Posts}
+<!-- this removes the default source/via links  -->
+<!-- {block:NoRebloggedFrom}
+{block:RebloggedFrom}{ReblogParentName}{/block:RebloggedFrom}
+{/block:NoRebloggedFrom} -->
+{block:ContentSource}<!-- {SourceURL}
+{block:SourceLogo}<img src="{BlackLogoURL}"width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}
+{block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->
+{/block:ContentSource}
+
+            <article class="{posttype}-post posts {TagsAsClasses}">
+<!-- text posts (includes NPF posts). Body content is with the other caption blocks + variables -->     
+ <!-- photo, photoset, and panorama posts -->           
+        {block:Photo}
+            <img src="{PhotoURL-HighRes}" alt="{photoalt}" class="photos">
+        {/block:Photo}
+
+        {block:Photoset}
+            {Photoset}
+        {/block:Photoset}
+            
+        {block:Panorama}
+            <img src="{photourl-panorama}" alt="{photoalt}">
+        {/block:Panorama}
+        
+<!-- quote posts -->            
+        {block:Quote}
+            <div class="quote">
+                "{Quote}"
+            </div>
+            <div class="source">
+                -{Source}
+            </div>
+        {/block:Quote}
+        
+<!-- chat posts -->            
+        {block:Chat}
+            <ul class="chat">
+                {block:Lines}
+                    <li>
+                        {block:Label}{Label}{/block:Label} 
+                        {Line}
+                    </li>
+                {/block:Lines}
+            </ul>
+        {/block:Chat}
+
+<!-- link posts -->
+        {block:link}
+            <div class="link">
+                <a href="{URL}">
+                    {Name}
+                </a>
+            </div>
+        {/block:link}
+            
+<!-- vidoe and audio -->            
+        {block:Video}
+            {Video-700}
+        {/block:Video}
+            
+        {block:Audio}
+            {audioembed}
+        {/block:Audio}
+           
+<!-- Answer posts -->            
+        {block:Answer}
+            <div class="question">
+                {Asker}: {Question}
+            </div>
+            {block:Answerer}
+            <div class="replies">
+                {Answerer}: {Answer}
+            </div>
+            {/block:Answerer}
+           {block:NotReblog}
+            <div class="replies">
+                {Replies}
+            </div>
+           {/block:NotReblog}
+        {/block:Answer}
+        
+<!-- captions  -->
+        <div class="caption {block:notreblog} original-post {/block:notreblog}">
+            {block:Text}
+                {block:Title}<h2>{Title}</h2>{/block:Title}
+            {/block:Text}
+            {block:notreblog}
+            {block:caption}{Caption}{/block:caption}
+            {block:Text}{body}{/block:Text}
+            {/block:notreblog}
+            {block:Rebloggedfrom}
+                {block:Reblogs}
+                <div class="reblogs">
+                    <div class="reblog-header">
+                        <a href="{permalink}" {block:isdeactivated}class="inactive"{/block:isdeactivated}>
+                                {username}
+                            </a>
+                    </div>
+                    <div class="reblog-content">
+                        {Body}
+                    </div>
+                </div>
+                {/block:Reblogs}
+            {/block:RebloggedFrom}
+        </div>
+            
+<!-- post info. wrapping these in {block:Date} prevents them from dispalying on ask, submit, and custom pages -->
+        {block:Date}
+            <div class="info flex align-center">
+                <div class="perma-info">
+                {block:NoteCount}
+	            <a href="{permalink}">{NoteCountWithLabel}</a>
+	            {/block:NoteCount}
+	            {block:permalinkpage}
+                <br>
+                {block:rebloggedfrom}
+                    <a href="{reblogparenturl}">
+                        from {reblogparentname}
+                    </a> 
+                    <a href="{reblogrooturl}">
+                        posted by {reblogrootname} 
+                    </a>
+                {/block:rebloggedfrom}
+                {/block:permalinkpage}
+            </div>
+            <div class="like-and-reblog flex align-center">    
+                {ReblogButton} {LikeButton}
+            </div>
+            </div>
+        {/block:Date}
+       
+<!-- tags -->            
+        {block:Hastags}
+            <div class="tags">
+                {block:Tags}
+                <a href="{TagURL}">#{Tag}</a>
+                {/block:Tags}
+            </div>
+        {/block:Hastags}
+
+            {PostNotes}
+        </article>
+      {/block:Posts}
+      </div>
+            {block:Pagination}
+            <div class="pagination flex centered">
+                {block:previouspage}
+                <a href="{previouspage}">Previous</a>
+                {/block:previouspage}
+                {block:nextpage}
+                <a href="{nextpage}">Next</a>
+                {/block:nextpage}
+            </div>
+            {/block:pagination}
+        </section> 
+    </main>
+</body>
+</html>
